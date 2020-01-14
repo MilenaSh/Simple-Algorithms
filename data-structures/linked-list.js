@@ -59,6 +59,7 @@ class LinkedList {
         this.length++;
         return this.printList();
     }
+
     traverseToIndex(index) {
         //Check parameters
         let counter = 0;
@@ -82,12 +83,52 @@ class LinkedList {
         this.length--;
         return this.printList();
     }
+
+    reverseSlow() {
+        let currentTail = this.tail;
+        let currentIndex = this.length-2;
+
+        while(currentIndex > -1) {
+            let currentTail = this.traverseToIndex(currentIndex);
+            this.append(currentTail.value);
+            currentIndex--;
+        }
+
+        this.head = currentTail;
+        return this.printList();
+    }
+
+    reverse() {
+        if(!this.head.next) {
+            return this.head;
+        }
+
+        let current = this.head;
+        let prev = null;
+        let next = current.next;
+
+        while(next) {
+            //pointers
+            current.next = prev;
+            next.next = current;
+
+            //nodes
+            current = next;
+            prev = current;
+            next = current;
+            next = current.next;
+        }
+        return this.printList();
+    }
 }
+
 
 let myLinkedList = new LinkedList(10);
 myLinkedList.append(5);
 myLinkedList.append(16);
 myLinkedList.prepend(1);
-myLinkedList.insert(2, 99);
-myLinkedList.insert(20, 88);
-myLinkedList.remove(1);
+myLinkedList.printList();
+// myLinkedList.insert(2, 99);
+// myLinkedList.insert(20, 88);
+//myLinkedList.remove(1);
+myLinkedList.reverse();
