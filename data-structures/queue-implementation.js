@@ -31,11 +31,27 @@ class Queue {
     }
 
     dequeue() {
-        const currentFirst = this.first;
-        this.first.next = this.first;
+        if(!this.first) {
+            return null;
+        }
+        if(this.first === this.last) {
+            this.last = null;
+        }
+
+        this.first = this.first.next;
         this.length--;
 
-        return currentFirst;
+        return this;
 
     }
 }
+
+let myQueue = new Queue;
+myQueue.enqueue('Pavel');
+
+myQueue.enqueue('Samir');
+
+myQueue.enqueue('Maria');
+myQueue.enqueue('Dobri');
+myQueue.peek();
+myQueue.dequeue();
