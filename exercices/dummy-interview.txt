@@ -1,0 +1,61 @@
+let x = {
+a:1,
+b:2
+};
+
+function returnObjectValues(obj){
+  let result = [];
+
+	for(key in obj){
+	  result.push(obj[key]);
+	}
+  return result;
+}
+
+let y = returnObjectValues(x);
+
+****************************************
+
+let x = "hi";
+
+function reverseString (inputString) {
+  let result = [];
+  let inputArr = inputString.split('');
+
+  for(i = inputArr.length-1; i>=0; i--) {
+  	result.push(inputArr[i]);
+      }
+   return result.join('');
+}
+
+let y = reverseString(x);
+
+********
+or functionaly
+
+const reverseStringFunc = (str) => str.split('').reverse().join('');
+let z = reverseStringFunc(x);
+**************************************
+
+
+let obj = {
+a:1,
+b:2,
+getA()
+{
+console.log(this.a)
+return this;
+},
+getB()
+{console.log(this.b)
+return this;
+}
+}
+
+obj.getA().getB();
+
+*************************
+
+[1,2].print()   //1,2
+
+Array.prototype.print = function(){return console.log(this.join(','))}
